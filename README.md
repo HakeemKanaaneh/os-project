@@ -14,8 +14,10 @@ disconnected graphs, negative weights, and same source/destination.
 
 ## Milestone 2 – Graph GUI
 ### Compile and Run
+```bash
 make milestone2
-./milestone2/sim <file>
+./milestone2/sim <file_name>
+```
 
 ### Description
 Displays the graph visually using raylib. Nodes shown as circles
@@ -24,8 +26,10 @@ path is highlighted in orange.
 
 ## Milestone 3 – Animation
 ### Compile and Run
+```bash
 make milestone3
-./milestone3/sim <file>
+./milestone3/sim <file_name>
+```
 
 ### Description
 Adds an animated entity (red circle) that travels along the
@@ -34,7 +38,9 @@ along each edge in W steps of 300ms each, and waits 1 second
 at each intermediate node. Shows arrival message at destination.
 
 ## Clean
+```bash
 make clean
+```
 
 ## Input File Format
 N M
