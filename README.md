@@ -2,8 +2,10 @@
 
 ## Milestone 1 – Dijkstra
 ### Compile and Run
+```bash
 make milestone1
-./milestone1/dijkstra <file>
+./milestone1/dijkstra <file_name>
+```
 
 ### Description
 Reads a directed weighted graph from a file and runs Dijkstra's
