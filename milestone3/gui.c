@@ -79,6 +79,7 @@ static int edge_weight(Graph *g, int u, int v) {
 static void draw_graph(Graph *g, const DijkstraResult *result,
                        Vector2 *pos, int src, int dst,
                        int W, int H) {
+    (void)W; /* used only for path text position via H */
     /* Path info */
     if (result->found) {
         char info[1024], path_str[768] = "";
@@ -116,7 +117,7 @@ static void draw_graph(Graph *g, const DijkstraResult *result,
         Color outline = (i == src || i == dst)  ? GOLD       : DARKGRAY;
         DrawCircleV(pos[i], NODE_RADIUS, fill);
         DrawCircleLinesV(pos[i], NODE_RADIUS, outline);
-        char label[8];
+        char label[16];
         snprintf(label, sizeof(label), "%d", i);
         int tw = MeasureText(label, 18);
         DrawText(label, (int)pos[i].x - tw/2, (int)pos[i].y - 9, 18, WHITE);
