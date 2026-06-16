@@ -15,10 +15,14 @@ milestone3:
 milestone4:
 	$(CC) $(CFLAGS) -o milestone4/sim milestone4/main.c milestone4/graph.c milestone4/gui.c $(RAYLIB) $(MATH)
 
+milestone5:
+	$(CC) $(CFLAGS) -o milestone5/sim milestone5/main.c milestone5/graph.c milestone5/gui.c $(RAYLIB) $(MATH)
+
 clean:
 	rm -f milestone1/dijkstra milestone1/*.o
 	rm -f milestone2/sim milestone2/*.o
 	rm -f milestone3/sim milestone3/*.o
 	rm -f milestone4/sim milestone4/*.o
+	rm -f milestone5/sim milestone5/*.o
 
-.PHONY: milestone1 milestone2 milestone3 milestone4 clean
+.PHONY: milestone1 milestone2 milestone3 milestone4 milestone5 clean

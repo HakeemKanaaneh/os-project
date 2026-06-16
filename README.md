@@ -37,6 +37,38 @@ shortest path. Features a Play/Stop button. The entity moves
 along each edge in W steps of 300ms each, and waits 1 second
 at each intermediate node. Shows arrival message at destination.
 
+## Milestone 4 – Multiple Travelers with fork()
+### Compile and Run
+```bash
+make milestone4
+./milestone4/sim <file_name>
+```
+### Description
+Parent process reads the graph and computes Dijkstra for each traveler.
+Uses fork() to create one child per traveler. Each child prints [PID] started
+then sleeps. All travelers animate simultaneously in different colors in the GUI.
+Parent sends SIGTERM to children when animation ends and waits for them.
+
+## Milestone 5 – IPC with Pipes
+### Compile and Run
+```bash
+make milestone5
+./milestone5/sim <file_name>
+```
+### Description
+Each child computes its own Dijkstra path independently. Children send position
+updates to the parent via pipes. Parent reads the pipes, prints the log to
+terminal, and updates the GUI. IPC method: pipes. Chosen because pipes are
+simple, reliable, and well-suited for one-directional child-to-parent
+communication without shared memory complexity.
+
+## Clean
+```bash
+make clean
+```
+
+## Input File Format
+
 ## Clean
 ```bash
 make clean
