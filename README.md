@@ -62,6 +62,20 @@ terminal, and updates the GUI. IPC method: pipes. Chosen because pipes are
 simple, reliable, and well-suited for one-directional child-to-parent
 communication without shared memory complexity.
 
+## Milestone 6 – Node Synchronization
+### Compile and Run
+```bash
+make milestone6
+./milestone6/sim <file_name>
+```
+### Description
+Adds synchronization so at most one traveler can be in a node at a time.
+Uses POSIX semaphores in shared memory (shm_open + mmap), one per node.
+Before entering a node, each child sends MSG_WAITING then calls sem_wait().
+After the 1-second stay, it calls sem_post() to release the node.
+GUI shows waiting travelers in yellow and done travelers in gray.
+IPC method: pipes. Synchronization: POSIX semaphores in shared memory.
+
 ## Clean
 ```bash
 make clean
