@@ -101,3 +101,43 @@ prioritized, reducing overall waiting time for shorter jobs. In our tests,
 SJF clearly changed the entry order at the bottleneck node compared to FCFS,
 demonstrating that shorter remaining paths get priority regardless of arrival time.
 
+## Clean
+```bash
+make clean
+```
+
+## Input File Format
+### Milestone 1
+
+```
+
+N M
+
+src1 dst1 weight1
+
+...
+
+src dst
+
+```
+### Milestones 2-7
+
+```
+
+# graph definition
+
+N M
+
+src1 dst1 weight1
+
+...
+
+# travelers
+
+K
+
+src1 dst1
+
+src2 dst2
+
+```
