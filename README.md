@@ -77,19 +77,45 @@ GUI shows waiting travelers in yellow and done travelers in gray.
 IPC method: pipes. Synchronization: POSIX semaphores in shared memory.
 
 ## Clean
+
+### Compile and Run
+
 ```bash
 make clean
 ```
 
 ## Input File Format
+### Milestone 1
 
-## Clean
-```bash
-make clean
 ```
 
-## Input File Format
 N M
+
 src1 dst1 weight1
+
 ...
-source destination
+
+src dst
+
+```
+### Milestones 2-7
+
+```
+
+# graph definition
+
+N M
+
+src1 dst1 weight1
+
+...
+
+# travelers
+
+K
+
+src1 dst1
+
+src2 dst2
+
+```
