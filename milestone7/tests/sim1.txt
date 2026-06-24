@@ -1,0 +1,21 @@
+# 3 travelers all connected to node 4 with same weight
+# After node 4 each has different path length to destination
+# T1: 0->4->5->6->7->8  (4 steps after node 4)
+# T2: 1->4->5->6        (2 steps after node 4)
+# T3: 2->4->5           (1 step after node 4)
+#
+# FCFS: whoever arrives first at node 4 enters first
+# SJF:  T3 first (1 step), T2 second (2 steps), T1 last (4 steps)
+9 7
+0 4 1
+1 4 1
+2 4 1
+4 5 1
+5 6 1
+6 7 1
+7 8 1
+# travelers
+3
+0 8
+1 6
+2 5

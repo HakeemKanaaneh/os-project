@@ -76,46 +76,28 @@ After the 1-second stay, it calls sem_post() to release the node.
 GUI shows waiting travelers in yellow and done travelers in gray.
 IPC method: pipes. Synchronization: POSIX semaphores in shared memory.
 
-## Clean
-
+## Milestone 7 – Scheduling Algorithms
 ### Compile and Run
-
 ```bash
-make clean
+make milestone7
+./milestone7/sim -schd fcfs <file_name>
+./milestone7/sim -schd sjf <file_name>
 ```
+### Description
+Replaces random node entry order with scheduling algorithms. The parent
+manages a waiting queue per node and grants entry based on the chosen
+algorithm. Two algorithms are implemented:
 
-## Input File Format
-### Milestone 1
+- FCFS (First Come First Served): travelers enter the node in the order
+  they requested it. The first to arrive is the first to enter.
 
-```
+- SJF (Shortest Job First): travelers enter based on their remaining
+  path length. The traveler with the fewest steps left enters first.
 
-N M
+### Comparison
+With FCFS, a traveler with a long remaining path can block others simply
+by arriving first. With SJF, travelers closer to their destination are
+prioritized, reducing overall waiting time for shorter jobs. In our tests,
+SJF clearly changed the entry order at the bottleneck node compared to FCFS,
+demonstrating that shorter remaining paths get priority regardless of arrival time.
 
-src1 dst1 weight1
-
-...
-
-src dst
-
-```
-### Milestones 2-7
-
-```
-
-# graph definition
-
-N M
-
-src1 dst1 weight1
-
-...
-
-# travelers
-
-K
-
-src1 dst1
-
-src2 dst2
-
-```
