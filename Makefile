@@ -21,6 +21,9 @@ milestone5:
 milestone6:
 	$(CC) $(CFLAGS) -o milestone6/sim milestone6/main.c milestone6/graph.c milestone6/gui.c $(RAYLIB) $(MATH) -lrt
 
+milestone7:
+	$(CC) $(CFLAGS) -o milestone7/sim milestone7/main.c milestone7/graph.c milestone7/gui.c $(RAYLIB) $(MATH) -lrt
+
 clean:
 	rm -f milestone1/dijkstra milestone1/*.o
 	rm -f milestone2/sim milestone2/*.o
@@ -28,5 +31,6 @@ clean:
 	rm -f milestone4/sim milestone4/*.o
 	rm -f milestone5/sim milestone5/*.o
 	rm -f milestone6/sim milestone6/*.o
+	rm -f milestone7/sim milestone7/*.o
 
-.PHONY: milestone1 milestone2 milestone3 milestone4 milestone5 milestone6 clean
+.PHONY: milestone1 milestone2 milestone3 milestone4 milestone5 milestone6 milestone7 clean
