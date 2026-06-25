@@ -161,18 +161,17 @@ void run_gui(SimData *data, NodeQueue *node_queues) {
                                 entry->arrival_time=msg.arrival_time;
                                 entry->next=NULL;
                                 if(data->sched_algo==SCHED_FCFS){
-                                    /* Append to end */
                                     WaitEntry **cur=&node_queues[msg.current_node].head;
                                     while(*cur) cur=&(*cur)->next;
                                     *cur=entry;
                                 } else {
-                                    /* SJF: insert by remaining path */
                                     WaitEntry **cur=&node_queues[msg.current_node].head;
                                     while(*cur&&(*cur)->remaining_path<=entry->remaining_path)
                                         cur=&(*cur)->next;
                                     entry->next=*cur; *cur=entry;
                                 }
-                                try_grant(msg.current_node,data,node_queues);
+                                /* Don't grant immediately — wait for all requests
+                                   to arrive this frame, grant after polling all pipes */
                             }
                             mq_push(&vs[i].queue,msg);
                             break;
@@ -198,6 +197,13 @@ void run_gui(SimData *data, NodeQueue *node_queues) {
                         default: break;
                     }
                 }
+            }
+        }
+
+        /* After polling all pipes, try to grant for all nodes */
+        if(playing){
+            for(int n=0;n<N;n++){
+                try_grant(n,data,node_queues);
             }
         }
 
