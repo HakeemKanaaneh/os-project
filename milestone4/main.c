@@ -34,7 +34,13 @@ int main(int argc, char *argv[]) {
             printf("[%d] started\n", getpid());
             fflush(stdout);
             /* Child sleeps until parent sends SIGTERM */
-            while (1) pause();
+	    int seconds = 0;
+            while (1) {
+       		sleep(5);
+       		seconds += 5;
+       		printf("[%d] running for %d seconds\n", getpid(), seconds);
+        	fflush(stdout);
+		}
             exit(EXIT_SUCCESS);
         }
         /* Parent records child PID */
