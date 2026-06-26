@@ -34,6 +34,7 @@ typedef struct {
 typedef struct {
     pid_t pid;
     int   traveler_idx;   /* which traveler (0-based) */
+    int   msg_type;
     int   current_node;
     int   next_node;      /* -1 = destination reached */
 } IPCMessage;

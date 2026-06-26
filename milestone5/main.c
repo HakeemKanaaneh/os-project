@@ -21,6 +21,7 @@ static void child_run(int traveler_idx, int src, int dst,
 
     if (!route.found) {
         /* Send one message with current=src, next=-1 to signal no path */
+	msg.msg_type     = 1;
         msg.current_node = src;
         msg.next_node    = -1;
         write(write_fd, &msg, sizeof(msg));
@@ -31,7 +32,8 @@ static void child_run(int traveler_idx, int src, int dst,
 
     /* Send position update for each node in path */
     for (int i = 0; i < route.path_len; i++) {
-        msg.current_node = route.path[i];
+        msg.msg_type     = 0;   /* 0 = normal */
+	msg.current_node = route.path[i];
         msg.next_node    = (i + 1 < route.path_len) ? route.path[i + 1] : -1;
         write(write_fd, &msg, sizeof(msg));
 

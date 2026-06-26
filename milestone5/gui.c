@@ -173,13 +173,18 @@ void run_gui(SimData *data) {
                 ssize_t n = read(data->travelers[i].pipe_fd, &msg, sizeof(msg));
                 if (n == (ssize_t)sizeof(msg)) {
                     /* Print log */
-                    if (msg.next_node == -1) {
-                        printf("[PID=%d] arrived at node %d | DESTINATION\n",
-                               (int)msg.pid, msg.current_node);
-                    } else {
-                        printf("[PID=%d] arrived at node %d | next node: %d\n",
-                               (int)msg.pid, msg.current_node, msg.next_node);
-                    }
+		    if (msg.msg_type == 1) {
+     			 printf("[PID=%d] NO PATH FOUND to destination!\n",
+              			 (int)msg.pid);
+       			 fflush(stdout);
+       			 vs[i].done = 1;
+   		    } else if (msg.next_node == -1) {
+ 		       	printf("[PID=%d] arrived at node %d | DESTINATION\n",
+           		    (int)msg.pid, msg.current_node);
+   		    } else {
+    		        printf("[PID=%d] arrived at node %d | next node: %d\n",
+              			 (int)msg.pid, msg.current_node, msg.next_node);
+   		    }
                     fflush(stdout);
                     queue_push(&vs[i].queue, msg);
                 }

@@ -1,0 +1,9 @@
+# node 5 is isolated - no edges to reach it
+6 3
+0 1 1
+1 2 1
+2 3 1
+# travelers
+2
+0 3
+0 5
